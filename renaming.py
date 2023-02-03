@@ -1,5 +1,6 @@
 import os
 
+#NOTE: it doesnt work with x trailing yet!
 
 def rename_photos(directory):
     for filename in os.listdir(directory):
