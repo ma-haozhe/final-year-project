@@ -13,7 +13,7 @@ f = open('/Users/haozhema/Documents/Final year project/gt.csv', 'w')
 
 # create the csv writer
 writer = csv.writer(f)
-
+writer.writerow(['filename', 'count', 'locations'])
 
 # load the JSON data from the file
 anno_file = "project-1-at-2023-03-06-17-55-c451917c.json"
@@ -25,7 +25,6 @@ for obj in data:
     # extract the image file name
     img_file = obj['data']['img']
     img_file = img_file_dir + img_file.split("-")[1]
-    #print(img_file)
 
     # extract the x and y values for each dot and calculate the plot coordinates
     dots = []
@@ -35,7 +34,9 @@ for obj in data:
             y = result['value']['y'] * result['original_height']/100
             dots.append((x, y))
             print(x,', ',y)
-    #这里坐标点float可能会出问题
+    #!!!!!!!这里坐标点float可能会出问题!!!!!!!
+    #!!!!!!!also might need to hard code for windows 60cm training set.
+
     #print(dots)
     row = [img_file,len(dots),dots]
     print(row)
