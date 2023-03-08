@@ -32,9 +32,10 @@ for obj in data:
         for result in annotation['result']:
             x = result['value']['x'] * result['original_width']/100
             y = result['value']['y'] * result['original_height']/100
-            dots.append((x, y))
+            dots.append((y, x))
             print(x,', ',y)
-    #!!!!!!!这里坐标点float可能会出问题!!!!!!!
+    #!!!!!!!float might be a problem here!!!!!!!
+    # also the 'localisation without bounding boxes' code requires the coordinates format to be (y, x)
     #!!!!!!!also might need to hard code for windows 60cm training set.
 
     #print(dots)
