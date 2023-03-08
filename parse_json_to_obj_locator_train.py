@@ -9,7 +9,7 @@ import json
 import csv
 
 # open the file in the write mode
-f = open('/Users/haozhema/Documents/Final year project/gt.csv', 'w')
+f = open('C:\\Users\\ma_ha\\final-year-project\\final-year-project\\gt.csv', 'w', newline='')
 
 # create the csv writer
 writer = csv.writer(f)
@@ -17,7 +17,7 @@ writer.writerow(['filename', 'count', 'locations'])
 
 # load the JSON data from the file
 anno_file = "project-1-at-2023-03-08-20-49-3b9f161b.json"
-img_file_dir = "data/60cm/"
+img_file_dir = "C:/Users/ma_ha/final-year-project/final-year-project/data/100_train_test/"
 with open(anno_file, 'r') as f:
     data = json.load(f)
 
