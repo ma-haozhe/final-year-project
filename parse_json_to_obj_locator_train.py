@@ -16,7 +16,7 @@ writer = csv.writer(f)
 writer.writerow(['filename', 'count', 'locations'])
 
 # load the JSON data from the file
-anno_file = "project-1-at-2023-03-06-17-55-c451917c.json"
+anno_file = "project-1-at-2023-03-08-20-49-3b9f161b.json"
 img_file_dir = "60cm/"
 with open(anno_file, 'r') as f:
     data = json.load(f)
