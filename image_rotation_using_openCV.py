@@ -2,10 +2,10 @@ import os
 import cv2
 
 # Define the path to your image directory
-img_dir = '1_test'
+img_dir = 'data\\1and3augmentation'
 
 # Define the path to the output directory
-output_dir = '1_augmentation'
+output_dir = 'data\\1and3augmentation_result'
 
 # Loop through all the files in the directory
 for filename in os.listdir(img_dir):

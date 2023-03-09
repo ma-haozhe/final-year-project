@@ -1,6 +1,12 @@
 #this one not only parse json and write it in csv,
 # but also write for the augmentation files
 
+# Instruction: 
+# first put the original files and augmented files under the same dir
+# then run the code
+# then remove the original images.
+# then train the model use augmented directory
+
 import json
 import csv
 import os
@@ -10,13 +16,13 @@ import cv2
 anno_file = "project-1-at-2023-03-08-20-49-3b9f161b.json"
 
 # Define the path to your image directory
-img_file_dir = "1_test/"
+img_file_dir = "C:\\Users\\ma_ha\\final-year-project\\final-year-project\\data\\1and3augmentation_result\\"
 
 # Define the path to the output CSV file
-csv_file = '/Users/haozhema/Documents/Final year project/gt_aug.csv'
+csv_file = 'gt_aug.csv'
 
 # Open the CSV file in write mode
-with open(csv_file, 'w') as f:
+with open(csv_file, 'w', newline='' ) as f:
 
     # Create the CSV writer
     writer = csv.writer(f)
@@ -37,23 +43,26 @@ with open(csv_file, 'w') as f:
 
         # Extract the x and y values for each dot and calculate the plot coordinates
         dots = []
+        dots_not_inverted=[]
         for annotation in obj['annotations']:
             for result in annotation['result']:
                 x = result['value']['x'] * result['original_width']/100
                 y = result['value']['y'] * result['original_height']/100
                 dots.append((y, x))
+                dots_not_inverted.append((x, y))
 
         # Loop through rotation angles in 2 degree increments
         for angle in range(0, 360, 2):
             # Rotate the dots
             rotated_dots = []
-            for dot in dots:
+            for dot in dots_not_inverted:
                 # Rotate each dot around the image center
                 center = (img.shape[1] / 2, img.shape[0] / 2)
                 rot_mat = cv2.getRotationMatrix2D(center, angle, 1)
                 dot = tuple(map(int, dot))
                 dot = (dot[0], dot[1], 1)
                 rotated_dot = tuple(map(int, (rot_mat.dot(dot))))
+                #need to invert x and y here too, because the code accept (y, x)
                 rotated_dot = (rotated_dot[1], rotated_dot[0])
                 rotated_dots.append(rotated_dot)
 

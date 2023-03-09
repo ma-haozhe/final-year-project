@@ -9,7 +9,7 @@ import json
 import csv
 
 # open the file in the write mode
-f = open('/Users/haozhema/Documents/Final year project/gt.csv', 'w')
+f = open('/Users/haozhema/Documents/Final year project/gt.csv', 'w', newline='')
 
 # create the csv writer
 writer = csv.writer(f)
