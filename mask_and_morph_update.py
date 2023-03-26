@@ -1,3 +1,6 @@
+# Haozhe Ma
+# March 2023
+
 import numpy as np
 import cv2
 
@@ -17,7 +20,7 @@ import cv2
 
 
 # Load the input image
-image = cv2.imread('60cm/30.jpeg')
+image = cv2.imread('60cm/27.jpeg')
 original = image.copy()
 image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
 
@@ -84,7 +87,7 @@ for c in filtered_cnts:
     if len(approx) > 4:
         contour_count_closing += 1
         
-        cv2.drawContours(original, [c], -1, (36, 255, 12), -1)
+        #cv2.drawContours(original, [c], -1, (36, 255, 12), -1)
             
         ellipse = cv2.fitEllipse(c)
         rectangle = cv2.minAreaRect(c)

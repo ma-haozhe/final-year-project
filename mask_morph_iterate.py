@@ -1,5 +1,9 @@
+# Haozhe Ma
+# March 2023
+
 # this file is for batch checking if the detection is correct. 
 # not the main developing file. 
+# this file is based on the script 'mask_and_morph_update.py' make changes on both files.
 
 import numpy as np
 import cv2
@@ -71,7 +75,7 @@ for i in range(1, 286):
             
             ellipse = cv2.fitEllipse(c)
             rectangle = cv2.minAreaRect(c)
-            print(ellipse)
+            print('file: ', str(i), ', coord: ', ellipse)
             cv2.ellipse(original, ellipse, (36, 255, 12), 2)
             cv2.rectangle(original, (int(rectangle[0][0] - rectangle[1][0] / 2), int(rectangle[0][1] - rectangle[1][1] / 2)), (int(rectangle[0][0] + rectangle[1][0] / 2), int(rectangle[0][1] + rectangle[1][1] / 2)), (36, 255, 12), 2)
 
