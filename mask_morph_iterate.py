@@ -71,13 +71,22 @@ for i in range(1, 286):
         approx = cv2.approxPolyDP(c, 0.04 * perimeter, False)
         if len(approx) > 4:
             
-            cv2.drawContours(original, [c], -1, (36, 255, 12), -1)
+            #cv2.drawContours(original, [c], -1, (36, 255, 12), -1)
             
             ellipse = cv2.fitEllipse(c)
             rectangle = cv2.minAreaRect(c)
             print('file: ', str(i), ', coord: ', ellipse)
             cv2.ellipse(original, ellipse, (36, 255, 12), 2)
-            cv2.rectangle(original, (int(rectangle[0][0] - rectangle[1][0] / 2), int(rectangle[0][1] - rectangle[1][1] / 2)), (int(rectangle[0][0] + rectangle[1][0] / 2), int(rectangle[0][1] + rectangle[1][1] / 2)), (36, 255, 12), 2)
+            # ellipse_1 = (ellipse[0], (ellipse[1][0]*2.5, ellipse[1][1]*2.5), ellipse[2])
+            # ellipse_3 = (ellipse[0], (ellipse[1][0]*2, ellipse[1][1]*2), ellipse[2])
+            # ellipse_4 = (ellipse[0], (ellipse[1][0]*1.5, ellipse[1][1]*1.5), ellipse[2])
+            # ellipse_8 = (ellipse[0], (ellipse[1][0]*0.5, ellipse[1][1]*0.5), ellipse[2])
+
+            # cv2.ellipse(original, ellipse_1, (36, 255, 12), 4)
+            # cv2.ellipse(original, ellipse_3, (36, 255, 12), 4)
+            # cv2.ellipse(original, ellipse_4, (36, 255, 12), 4)
+            # cv2.ellipse(original, ellipse_8, (36, 255, 12), 4)
+            #cv2.rectangle(original, (int(rectangle[0][0] - rectangle[1][0] / 2), int(rectangle[0][1] - rectangle[1][1] / 2)), (int(rectangle[0][0] + rectangle[1][0] / 2), int(rectangle[0][1] + rectangle[1][1] / 2)), (36, 255, 12), 2)
 
             # Get the centroid of the ellipse (center of the fitted ellipse)
             cX, cY = int(ellipse[0][0]), int(ellipse[0][1])
@@ -94,6 +103,7 @@ for i in range(1, 286):
     cv2.imshow('original', original)
 
     # Show result in 5 seconds interval
-    cv2.waitKey(3000)
+    # should be 3000, if you wanna have it 
+    cv2.waitKey(30000)
 
 cv2.destroyAllWindows()
